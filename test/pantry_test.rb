@@ -10,5 +10,6 @@ class PantryTest < Minitest::Test
 
   def test_initialization_with_attributes
     assert_instance_of Pantry, @pantry
+    assert_equal ({}), @pantry.stock
   end
 end
