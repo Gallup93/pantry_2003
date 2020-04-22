@@ -8,4 +8,8 @@ class Recipe
   def add_ingredient(ingredient, quantity)
     @ingredients_required[ingredient] += quantity
   end
+
+  def ingredients
+    @ingredients_required.map{|key, value| key}
+  end
 end
