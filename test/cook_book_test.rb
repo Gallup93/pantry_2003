@@ -13,4 +13,10 @@ class CookBookTest < Minitest::Test
     assert_instance_of CookBook, @cookbook
     assert_equal ([]), @cookbook.recipes
   end
+
+  def test_add_recipe
+    @recipe1 = Recipe.new("Mac and Cheese")
+    @recipe2 = Recipe.new("Cheese Burger")
+    assert_equal [@recipe1, @recipe2], @cookbook.recipes
+  end
 end
