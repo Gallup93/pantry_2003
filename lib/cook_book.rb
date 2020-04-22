@@ -15,4 +15,17 @@ class CookBook
     end
     all_ingredients.uniq
   end
+
+  def highest_calorie_meal
+    highest_calories = 0
+    result = nil
+    @recipes.each do |recipe|
+      calories = recipe.total_calories
+      if calories > highest_calories
+        highest_calories = calories
+        result = recipe
+      end
+    end
+    result
+  end
 end
