@@ -23,4 +23,20 @@ class PantryTest < Minitest::Test
     @pantry.restock(@ingredient1, 10)
     assert_equal 15, @pantry.stock_check(@ingredient1)
   end
+
+  def test_enough_ingredients_for?
+    @cookbook = CookBook.new
+    @ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
+    @recipe1 = Recipe.new("Mac and Cheese")
+    @recipe1.add_ingredient(@ingredient1, 2)
+    @recipe1.add_ingredient(@ingredient2, 8)
+    @cookbook.add_recipe(@recipe1)
+
+    assert_equal false, @pantry.enough_ingredients_for?(@recipe1)
+
+    @pantry.restock(@ingredient1, 2)
+    @pantry.restock(@ingredient2, 8)
+
+    assert_equal true, @pantry.enough_ingredients_for?(@recipe1)
+  end
 end
